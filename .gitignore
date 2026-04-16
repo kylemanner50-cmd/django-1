@@ -1,2 +1,6 @@
 .vscode/
 django_venv/
+ll_env/
+__pycache__/
+*.pyc
+db.sqlite3

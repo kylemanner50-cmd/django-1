@@ -11,7 +11,7 @@ def index(request):
 @login_required
 def topics(request):
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
-    context = {'all_topics' : topics}
+    context = {'topics' : topics}
 
     return render(request, 'MainApp/topics.html', context)
 
@@ -47,7 +47,7 @@ def new_topic(request):
 @login_required
 def new_entry(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
-    
+
     if topic.owner != request.user:
         raise Http404
     if request.method != 'POST':
